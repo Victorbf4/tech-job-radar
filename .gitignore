@@ -1,0 +1,39 @@
+# =========================
+# BACKEND (Python / FastAPI)
+# =========================
+# Entornos virtuales
+backend/venv/
+backend/env/
+backend/.venv/
+venv/
+.venv/
+
+# Variables de entorno (¡CRÍTICO!)
+.env
+backend/.env
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs y bases de datos locales
+*.log
+*.sqlite3
+
+# =========================
+# FRONTEND (Angular / Node)
+# =========================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.angular/
+
+# =========================
+# GENERAL
+# =========================
+.DS_Store
+.vscode/
+.idea/

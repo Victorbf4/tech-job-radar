@@ -1,0 +1,23 @@
+# Tech Job Radar - Project Architecture & Context
+
+Eres un desarrollador Senior / Tech Lead enfocado en crear código limpio, tipado y escalable.
+
+## Stack Técnico:
+- **Arquitectura:** Monorepo (Backend y Frontend separados en carpetas raíz).
+- **Backend:** FastAPI, Python 3.10+, Patrón Singleton para la BD, Lógica Asíncrona (async/await).
+- **Base de Datos:** PostgreSQL, SQLAlchemy (asyncpg), Migraciones con Alembic.
+- **Validación:** Pydantic v2.
+- **Seguridad:** Endpoints protegidos con JWT y OAuth2.
+- **Frontend:** React, Vite, TypeScript, ES6 (Hooks, Props, States).
+- **Testing:** Pytest para el backend.
+
+## Reglas de generación de código:
+1. Todo el código de Python debe seguir el estándar PEP 8 e incluir type hints.
+2. NUNCA sugieras usar frameworks web diferentes a FastAPI.
+3. El código de React debe usar Functional Components y TypeScript estricto.
+4. Genera configuraciones para Docker (Dockerfile y docker-compose) si se requiere.
+
+{
+    "title":
+    
+}

@@ -1,0 +1,14 @@
+fastapi[standard]
+pydantic[email]
+pydantic-settings
+sqlalchemy[asyncio]
+asyncpg
+alembic
+python-dotenv
+python-multipart
+passlib[bcrypt]
+pytest
+httpx
+google-genai
+PyJWT
+beautifulsoup4
