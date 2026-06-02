@@ -1,0 +1,55 @@
+name: Full Stack CI Pipeline
+
+# ¿Cuándo se va a ejecutar este robot?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # ==========================================
+  # TRABAJO 1: REVISAR EL BACKEND (PYTHON)
+  # ==========================================
+  backend-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias del Backend
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      # Aquí en el futuro agregaremos 'pytest' para correr pruebas automáticas
+
+  # ==========================================
+  # TRABAJO 2: REVISAR EL FRONTEND (ANGULAR)
+  # ==========================================
+  frontend-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar dependencias de Angular
+        run: |
+          cd frontend
+          npm install
+
+      - name: Compilar el Frontend (Asegurar que no hay errores de TypeScript)
+        run: |
+          cd frontend
+          npm run build
