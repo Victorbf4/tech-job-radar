@@ -7,9 +7,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   # ==========================================
   # TRABAJO 1: REVISAR EL BACKEND (PYTHON)
@@ -30,6 +27,11 @@ jobs:
           cd backend
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Ejecutar pruebas con Pytest
+        run: |
+          cd backend
+          pytest
           
       # Aquí en el futuro agregaremos 'pytest' para correr pruebas automáticas
 
