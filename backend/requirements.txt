@@ -12,3 +12,4 @@ httpx
 google-genai
 PyJWT
 beautifulsoup4
+psycopg2-binary
