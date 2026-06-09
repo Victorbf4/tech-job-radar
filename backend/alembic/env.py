@@ -55,9 +55,15 @@ def do_run_migrations(connection: Connection) -> None:
 
 
 def run_migrations_online() -> None:
+    db_url = get_database_url()
+    conexion_args = {}
+
+    if "localhost" not in db_url:
+        conexion_args["ssl"] = ssl.create_default_context()
+
     connectable: AsyncEngine = create_async_engine(
-        get_database_url(),
-        connect_args={"ssl": ssl.create_default_context()},
+        db_url,
+        connect_args=conexion_args,
         poolclass=pool.NullPool,
     )
 

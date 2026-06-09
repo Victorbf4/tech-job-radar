@@ -27,9 +27,14 @@ class Database:
     def engine(self) -> AsyncEngine:
         if self._engine is None:
             settings = get_settings()
+            conexion_args = {}
+
+            if "localhost" not in settings.database_url:
+                conexion_args["ssl"] = ssl.create_default_context()
+
             self._engine = create_async_engine(
                 settings.database_url,
-                connect_args={"ssl": ssl.create_default_context()},
+                connect_args=conexion_args,
                 pool_pre_ping=True,
             )
         return self._engine
