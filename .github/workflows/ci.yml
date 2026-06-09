@@ -43,7 +43,8 @@ jobs:
 
       - name: Ejecutar pruebas con Pytest
         env: 
-          DATABASE_URL: "postgresql+asyncpg://usuario:password@localhost:5432/test_db?sslmode=disable"
+          DATABASE_URL: "postgresql+asyncpg://usuario:password@localhost:5432/test_db"
+          PGSSLMODE: "disable"
           SECRET_KEY: "test-secret-key"
           GEMINI_API_KEY: "test-gemini-api-key"
         run: |
