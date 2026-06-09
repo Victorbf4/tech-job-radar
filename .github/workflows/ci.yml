@@ -13,6 +13,19 @@ jobs:
   # ==========================================
   backend-ci:
     runs-on: ubuntu-latest
+
+    # --- NUEVO: El robot levantará un PostgreSQL temporal ---
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: usuario
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=5
+
     steps:
       - name: Descargar el código
         uses: actions/checkout@v4
@@ -30,7 +43,7 @@ jobs:
 
       - name: Ejecutar pruebas con Pytest
         env: 
-          DATABASE_URL: "postgresql+asyncpg://usuario:password@localhost/test_db"
+          DATABASE_URL: "postgresql+asyncpg://usuario:password@localhost:5432/test_db"
           SECRET_KEY: "test-secret-key"
           GEMINI_API_KEY: "test-gemini-api-key"
         run: |
