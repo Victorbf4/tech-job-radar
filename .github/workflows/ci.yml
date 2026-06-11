@@ -49,6 +49,7 @@ jobs:
           GEMINI_API_KEY: "test-gemini-api-key"
         run: |
           cd backend
+          alembic upgrade head
           pytest
           
       # Aquí en el futuro agregaremos 'pytest' para correr pruebas automáticas
